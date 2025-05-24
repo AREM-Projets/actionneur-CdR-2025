@@ -2,6 +2,7 @@
 // Creation Date : 23/02/2025
 
 #include <Arduino.h>
+#include <Servo.h>
 #include "stepper_motor.h"
 #include "test_bench.h"
 
@@ -9,7 +10,11 @@
 #define MOTOR_SPEED 0.5
 #define COUNTER_INSTANCE 1
 
-// Create a HardwareTimer instance
+// Create the uart interface instance
+//                      RX    TX
+HardwareSerial Serial1(PA3, PA2);
+
+// Create a stepper motor instance
 HardwareTimer timer1(TIM1);  
 StepperMotor_t motor(200, D10, D9, 1, timer1);
 
@@ -24,6 +29,9 @@ void setup()
   // Initialize Serial for debugging
   Serial.begin(9600);
   delay(5000);
+
+  // Initialize servos
+  
 
 }
 
