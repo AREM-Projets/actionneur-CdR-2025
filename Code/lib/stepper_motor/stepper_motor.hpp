@@ -7,7 +7,7 @@
 class StepperMotor_t;
 
 #include <Arduino.h>
-#include "stepper_motor_interrupt.h"
+#include "stepper_motor_interrupt.hpp"
 #include "math.h"
 
 #define STEPPER_DUTY_CYCLE 1 //percent

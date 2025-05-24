@@ -2,9 +2,9 @@
 // Creation Date : 23/02/2025
 
 #include <Arduino.h>
-#include <Servo.h>
-#include "stepper_motor.h"
-#include "test_bench.h"
+#include "stepper_motor.hpp"
+#include "test_bench.hpp"
+#include "servo_pwm.hpp"
 
 #define NUMBER_OF_STEP_TO_DO 1200
 #define MOTOR_SPEED 0.5
@@ -15,8 +15,8 @@
 HardwareSerial Serial1(PA3, PA2);
 
 // Create a stepper motor instance
-HardwareTimer timer1(TIM1);  
-StepperMotor_t motor(200, D10, D9, 1, timer1);
+HardwareTimer timer16(TIM16);  
+StepperMotor_t motor(200, PB5, PB6, 1, timer16);
 
 void setup()
 {
@@ -31,7 +31,7 @@ void setup()
   delay(5000);
 
   // Initialize servos
-  
+
 
 }
 
