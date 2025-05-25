@@ -21,7 +21,7 @@ Bien que simple à utiliser, la bibliothèque standard repose sur une implément
 ```cpp
 #include "Servo_pwm.h"
 
-Servo_pwm monServo(PA8);  // Utilisation automatique d'un timer
+ServoPwm monServo(PA8);  // Utilisation automatique d'un timer
 
 void setup() {
     // Centrer le servo

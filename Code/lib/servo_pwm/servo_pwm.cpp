@@ -1,7 +1,7 @@
 #include "servo_pwm.hpp"
 
 // Constructor with automatic timer/channel assignment
-Servo_pwm::Servo_pwm(uint32_t new_pwm_pin) :
+ServoPwm::ServoPwm(uint32_t new_pwm_pin) :
     pwm_pin(new_pwm_pin),
     timer(nullptr),
     pwmChannel(1) // Default channel if not specified
@@ -19,7 +19,7 @@ Servo_pwm::Servo_pwm(uint32_t new_pwm_pin) :
 }
 
 // Constructor with custom timer and channel
-Servo_pwm::Servo_pwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTimer &new_timer) :
+ServoPwm::ServoPwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTimer &new_timer) :
     pwm_pin(new_pwm_pin),
     pwmChannel(new_pwm_channel),
     timer(&new_timer)
@@ -29,7 +29,7 @@ Servo_pwm::Servo_pwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTim
 }
 
 // Destructor
-Servo_pwm::~Servo_pwm()
+ServoPwm::~ServoPwm()
 {
     if (timer) {
         timer->pauseChannel(pwmChannel);
@@ -37,8 +37,21 @@ Servo_pwm::~Servo_pwm()
     }
 }
 
+// Method to control servo by angle (0 to 180 degrees)
+void ServoPwm::write(int value)
+{
+    if (value < 0) value = 0;
+    if (value > 180) value = 180;
+
+    // Convert angle to microseconds (standard range: 1000µs to 2000µs)
+    uint16_t us = map(value, 0, 180, 1000, 2000);
+
+    this->writeMicroseconds(us);
+}
+
+
 // Method to control servo by pulse width
-void Servo_pwm::writeMicroseconds(uint16_t us)
+void ServoPwm::writeMicroseconds(uint16_t us)
 {
     if (timer) {
         timer->setCaptureCompare(pwmChannel, us, MICROSEC_COMPARE_FORMAT);

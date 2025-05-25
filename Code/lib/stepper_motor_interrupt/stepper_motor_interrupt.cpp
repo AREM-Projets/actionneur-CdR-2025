@@ -1,4 +1,4 @@
-#include "stepper_motor_interrupt.h"
+#include "stepper_motor_interrupt.hpp"
 
 volatile uint32_t pwm_isr_counter[4] = {0, 0, 0, 0};
 StepperMotor_t *stepper_isr_inst[4] = {nullptr, nullptr, nullptr, nullptr};

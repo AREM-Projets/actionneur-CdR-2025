@@ -4,7 +4,7 @@
 // Creation Date : 23/02/2025
 
 #include <Arduino.h>
-#include "stepper_motor.h"
+#include "stepper_motor.hpp"
 
 extern volatile uint32_t pwm_isr_counter[4];
 extern StepperMotor_t* stepper_isr_inst[4];

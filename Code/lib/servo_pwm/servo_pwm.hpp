@@ -5,7 +5,7 @@
 
 #include <Arduino.h>
 
-class Servo_pwm
+class ServoPwm
 {
 private:
     // Electrical Data
@@ -15,12 +15,13 @@ private:
 
 public:
     // To use automatically a timer and a channel available thanks to ST functions
-    Servo_pwm(uint32_t new_pwm_pin);
+    ServoPwm(uint32_t new_pwm_pin);
 
     // To use a custom channel and a custom timer
-    Servo_pwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTimer &new_timer);
+    ServoPwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTimer &new_timer);
 
-    ~Servo_pwm();
+    ~ServoPwm();
 
+    void write(int value);
     void writeMicroseconds(uint16_t us);
 };
