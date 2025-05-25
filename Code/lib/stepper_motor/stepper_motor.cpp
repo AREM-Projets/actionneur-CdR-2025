@@ -1,4 +1,4 @@
-#include "stepper_motor.h"
+#include "stepper_motor.hpp"
 
 /* ---------------------- Constructor and destructor ---------------------- */
 

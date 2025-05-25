@@ -22,5 +22,6 @@ public:
 
     ~ServoPwm();
 
+    void write(int value);
     void writeMicroseconds(uint16_t us);
 };

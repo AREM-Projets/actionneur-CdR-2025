@@ -37,6 +37,19 @@ ServoPwm::~ServoPwm()
     }
 }
 
+// Method to control servo by angle (0 to 180 degrees)
+void ServoPwm::write(int value)
+{
+    if (value < 0) value = 0;
+    if (value > 180) value = 180;
+
+    // Convert angle to microseconds (standard range: 1000µs to 2000µs)
+    uint16_t us = map(value, 0, 180, 1000, 2000);
+
+    this->writeMicroseconds(us);
+}
+
+
 // Method to control servo by pulse width
 void ServoPwm::writeMicroseconds(uint16_t us)
 {
