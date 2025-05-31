@@ -1,7 +1,7 @@
 #include "servo_pwm.hpp"
 
 // Constructor with automatic timer/channel assignment
-ServoPwm::ServoPwm(uint32_t new_pwm_pin) :
+ServoPwm::ServoPwm(uint32_t new_pwm_pin, int value = 0) :
     pwm_pin(new_pwm_pin),
     timer(nullptr),
     pwmChannel(1) // Default channel if not specified
@@ -19,7 +19,7 @@ ServoPwm::ServoPwm(uint32_t new_pwm_pin) :
 }
 
 // Constructor with custom timer and channel
-ServoPwm::ServoPwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTimer &new_timer) :
+ServoPwm::ServoPwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTimer &new_timer, int value = 0) :
     pwm_pin(new_pwm_pin),
     pwmChannel(new_pwm_channel),
     timer(&new_timer)

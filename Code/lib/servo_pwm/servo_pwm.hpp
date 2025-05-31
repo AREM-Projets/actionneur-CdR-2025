@@ -15,10 +15,10 @@ private:
 
 public:
     // To use automatically a timer and a channel available thanks to ST functions
-    ServoPwm(uint32_t new_pwm_pin);
+    ServoPwm(uint32_t new_pwm_pin, int value);
 
     // To use a custom channel and a custom timer
-    ServoPwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTimer &new_timer);
+    ServoPwm(uint32_t new_pwm_pin, uint32_t new_pwm_channel, HardwareTimer &new_timer, int value);
 
     ~ServoPwm();
 
